@@ -3,9 +3,12 @@ import './App.css'
 function App() {
  
   return (
-    <div> 
+    <> 
+    <div className='bg-green-200'> 
       Booking App
-    </div>
+    </div>  
+    </>
+    
   )
 }
 

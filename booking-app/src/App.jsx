@@ -4,7 +4,7 @@ function App() {
  
   return (
     <> 
-    <div className='bg-green-200'> 
+    <div className='bg-blue-200'> 
       Booking App
     </div>  
     </>

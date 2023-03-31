@@ -2,18 +2,22 @@ const express = require('express');
 const cors = require('cors');
 const { default: mongoose } = require('mongoose');
 const User = require('./models/User')
-const bctypt =require('bcrypt')
+const bctypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const cookieParser = require('cookie-parser')
 require('dotenv').config()
 const app = express();
 
 
 const bcryptSalt = bctypt.genSaltSync(10)
+const jwtSecret = 'fruitmango2fruitkiwi2'
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:5173'
+    origin: 'http://127.0.0.1:5173'
 }))
 
 
@@ -38,4 +42,34 @@ app.post('/register', async(req, res) => {
     
 }) 
 
+app.post('/login', async (req, res) => { 
+    const { email, password } = req.body;
+    const userdetails = await User.findOne({ email});
+    if (userdetails) {  
+        const passwordOk = bctypt.compareSync(password, userdetails.password);
+        if (passwordOk) {
+            jwt.sign({ email: userdetails.email, id: userdetails._id}, jwtSecret, {}, (err, token) => {
+                if (err) throw err;
+                res.cookie('token', token).json(userdetails);
+            })
+        } else { 
+            res.status(422).json('passwordNotok');
+        }
+    } else { 
+        res.json('not found')
+    }
+})
+
+app.get('/profile', (req, res) => { 
+    const { token } = req.cookies;
+    if (token) { 
+        jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+            if (err) throw err;
+            const {name, email, _id} = await User.findById(userData.id)
+            res.json({name, email, _id})
+        });
+    } else {
+        res.json(null)
+    }
+})
 app.listen(8080)

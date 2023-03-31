@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* for all input css */
+input[type= 'text'], input[type= 'email'], input[type= 'password'] {    
+    @apply w-full border rounded-xl py-3 px-4 mt-4
+}

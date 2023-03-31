@@ -3,7 +3,7 @@ import React from 'react'
 
 const IndexPage = () => {
   return (
-    <div > 
+    <div className='p-4' > 
       index page
     </div>  
   )

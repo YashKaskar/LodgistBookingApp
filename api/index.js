@@ -6,6 +6,9 @@ const bctypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
 const imageDownloader = require('image-downloader');
+const multer = require('multer');
+const fs = require('fs');
+
 require('dotenv').config()
 const app = express();
 
@@ -88,6 +91,8 @@ app.post('/upload-by-link', async(req, res) => {
         dest: __dirname + '/uploads/' + newName,
     })
     res.json(newName);
-}) 
+})
+
+
 
 app.listen(8080)

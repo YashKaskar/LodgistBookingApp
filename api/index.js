@@ -88,11 +88,10 @@ app.post('/upload-by-link', async(req, res) => {
     const newName = 'photo' + Date.now() +  '.jpg'
     await imageDownloader.image({
         url: link,
-        dest: __dirname + '/uploads/' + newName,
+        dest: __dirname + 'uploads/' + newName,
     })
     res.json(newName);
 })
-
 
 
 app.listen(8080)

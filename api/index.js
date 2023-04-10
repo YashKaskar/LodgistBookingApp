@@ -94,4 +94,6 @@ app.post('/upload-by-link', async(req, res) => {
 })
 
 
+app.post('/upload')
+
 app.listen(8080)

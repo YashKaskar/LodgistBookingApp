@@ -94,7 +94,7 @@ const PlacesPage = () => {
             </div>
             <div className='mt-2 grid-cols-3 gap-2 md:grid-4 lg:grid-cols-6'> 
             {addedPhotos.length > 0 && addedPhotos.map(link => (      
-                <div className='h-50 mt-1 flex flex-row' >   
+                <div className='h-50 mt-1 flex flex-row'key={link} >   
                  <img className='rounded-2xl w-80' src= {'http://localhost:8080/uploads/'+ link} alt="image" />
                 </div>
               ))}

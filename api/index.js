@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { default: mongoose } = require('mongoose');
 const User = require('./models/User')
+const Place = require('./models/Place')
 const bctypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
@@ -105,6 +106,19 @@ app.post('/upload', photosMiddleWare.array('photos', 100), (req, res) => {
         uploadedFiles.push(newPath.replace('uploads', ''));
     }
  res.json(uploadedFiles)
+})
+
+
+app.post('/places', (req, res) => { 
+    const { token } = req.cookies;
+    const { title, address, addedPhotos, description, perks, extraInfo, checkIn, checkOut, maxGuests } = req.body;
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+        if (err) throw err;
+        const placeDoc = await Place.create({
+            owner: userData.id,
+            title, address, addedPhotos, description, perks, extraInfo, checkIn, checkOut, maxGuests
+        }) 
+    });
 })
 
 app.listen(8080)

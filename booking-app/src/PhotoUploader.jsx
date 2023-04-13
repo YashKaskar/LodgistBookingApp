@@ -1,12 +1,13 @@
 import { useState } from "react";
-import  axios  from 'axios';
+import axios from 'axios'
 
-export default function PhotoUploader({addedPhotos, onChange}) {
+export default function PhotoUploader({ addedPhotos, onChange }) {
+  
     const [photoLink, setPhotoLink] = useState('')
-   
-      async function addPhotoByLink(ev) {
+  
+       function addPhotoByLink(ev) {
         ev.preventDefault()
-        const { data: filename } = await axios.post('/upload-by-link', { link: photoLink })
+        const { data: filename } = axios.post('/upload-by-link', { link: photoLink })
         onChange(prev => {
           return [...prev, filename]
         });
@@ -41,8 +42,8 @@ export default function PhotoUploader({addedPhotos, onChange}) {
             </div>
             <div className='mt-2 grid-cols-3 gap-2 md:grid-4 lg:grid-cols-6'> 
             {addedPhotos.length > 0 && addedPhotos.map(link => (      
-                <div className='h-50 mt-1 flex flex-row'key={link} >   
-                 <img className='rounded-2xl w-80' src= {'http://localhost:8080/uploads/'+ link} alt="image" />
+                <div className='h-50 mt-1 flex flex-row' key={link}>   
+                 <img className='rounded-2xl w-80' src= {'http://localhost:8080/uploads/'+ link} alt="image"  />
                 </div>
               ))}
               <label className='border bg-transparent rounded-xl p-9 flex gap-3 mt-5 w-44'> 

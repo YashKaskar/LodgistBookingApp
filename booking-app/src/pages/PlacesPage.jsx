@@ -1,10 +1,19 @@
-import React from 'react'
-import { Link, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import AccountNavigation from './../AccountNavigation';
+import axios from 'axios';
 
 
 
 const PlacesPage = () => {
+
+  const [places, setPlaces] = useState([]);
+
+  useEffect(() => {
+    axios.get('/places').then(({ data }) => { 
+        setPlaces(data)
+      })
+  })
 
   return (
     <div>
@@ -16,8 +25,22 @@ const PlacesPage = () => {
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
         </Link>
-        <br />
-        <h3 className='mt-2'>List of all added places</h3>
+      </div>
+      <h3 className='mt-6 text-center font-medium'>List of all added places</h3>
+      <div className='mt-4 p-4'> 
+        {places.length > 0 && places.map(place => (
+          <Link to={'/account/places/'+place._id} className='flex cursor-pointer bg-zinc-200 gap-4 p-4 rounded-2xl'>
+            <div className='h-32 w-32 bg-gray-300 shrink-0'> 
+              {place.photos.length > 0 && (
+                  <img src={place.photos[0]} alt="" />
+              )}
+            </div>
+            <div>
+            <h2 className='text-xl font-bold'>{place.title}</h2>
+            <p className='text-sm mt-2 '>{place.description}</p>
+            </div>
+            </Link>
+        ))}
       </div>
     </div>
   )

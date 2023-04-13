@@ -10,6 +10,7 @@ const imageDownloader = require('image-downloader');
 const multer = require('multer');
 const fs = require('fs');
 
+
 require('dotenv').config()
 const app = express();
 
@@ -19,7 +20,7 @@ const jwtSecret = 'fruitmango2fruitkiwi2'
 
 app.use(express.json());
 app.use(cookieParser());
-app.use('/uploads', express.static(__dirname + '/uploads'))
+app.use('/uploads', express.static(__dirname + '/uploads/'))
 
 app.use(cors({
     credentials: true,
@@ -116,8 +117,16 @@ app.post('/places', (req, res) => {
         if (err) throw err;
         const placeDoc = await Place.create({
             owner: userData.id,
-            title, address, addedPhotos, description, perks, extraInfo, checkIn, checkOut, maxGuests
+            title, address, photos: addedPhotos, description, perks, extraInfo, checkIn, checkOut, maxGuests
         }) 
+    });
+})
+
+app.get('/places', (req, res) => {  
+    const { token } = req.cookies;
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {     
+        const { id } = userData;
+        res.json(await Place.find({ owner: id }));
     });
 })
 

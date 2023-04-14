@@ -66,7 +66,7 @@ export default function PlacesFormPage() {
           <input type="text" value={address} onChange={ev => setAddress(ev.target.value)} placeholder='address' />
           
           {preInput('Photos')}
-          <PhotoUploader addedPhotos={addedPhotos} onChange={setAddedPhotos} />
+          <PhotoUploader addedPhotos={addedPhotos}  onChange={setAddedPhotos} />
 
           {preInput('Description', 'Description about the place')}
           <textarea  value={description} onChange={ ev => setDescription(ev.target.value)} className='w-full border py-6 px-2 mt-6' />
@@ -94,7 +94,7 @@ export default function PlacesFormPage() {
               <input type="number" value={maxGuests} onChange={ ev => setMaxGuests(ev.target.value)} />
             </div>
           </div>
-         <button className='w-44 mt-4   border rounded-xl py-2 px-2 text-lg font-medium text-lodgist1 bg-sky-400 ' onClick={redirect} >Save</button>
+         <button className='w-44 mt-4   border rounded-xl py-2 px-2 text-lg font-medium text-lodgist1 bg-sky-400 ' >Save</button>
       </form>
       </div>
     )

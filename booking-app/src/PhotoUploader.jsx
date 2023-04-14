@@ -1,13 +1,12 @@
 import { useState } from "react";
-import axios from 'axios'
+import  axios  from 'axios'
 
 export default function PhotoUploader({ addedPhotos, onChange }) {
   
     const [photoLink, setPhotoLink] = useState('')
-  
-       function addPhotoByLink(ev) {
+       async function addPhotoByLink(ev) {
         ev.preventDefault()
-        const { data: filename } = axios.post('/upload-by-link', { link: photoLink })
+        const { data: filename } = await axios.post('/upload-by-link', { link: photoLink })
         onChange(prev => {
           return [...prev, filename]
         });

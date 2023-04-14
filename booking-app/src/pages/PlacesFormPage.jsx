@@ -3,12 +3,13 @@ import Perks from './../Perks';
 import axios from 'axios';
 import PhotoUploader from './../PhotoUploader';
 import AccountNavigation from './../AccountNavigation';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+
 
 
 export default function PlacesFormPage() {  
 
-  const { id } = useParams();  
+   
     const [title, setTitle] = useState('')
     const [address, setAddress] = useState('')
     const [addedPhotos, setAddedPhotos] = useState([])
@@ -18,7 +19,8 @@ export default function PlacesFormPage() {
     const [checkIn, setCheckIn] = useState('')
     const [checkOut, setCheckOut] = useState('')
     const [maxGuests, setMaxGuests] = useState(1)
-    const [redirect,setRedirect] = useState(false);
+    const [redirect, setRedirect] = useState(false)
+    
   
     function inputHeader(text) {
       return(
@@ -45,14 +47,18 @@ export default function PlacesFormPage() {
     async function addNewPlace(ev) {  
       ev.preventDefault();
       await axios.post('/places', {
-        title, address, addedPhotos, description, perks, extraInfo, checkIn, checkOut, maxGuests
+        title, address, addedPhotos,
+        description, perks, extraInfo,
+        checkIn, checkOut, maxGuests
       });
       setRedirect(true)
   }
   
-  if (redirect) {
-    return <Navigate to={'/account/places'} />
-  }
+  
+  if (redirect) {  
+        return <Navigate to={'/account/places'} /> 
+      }
+  
   
     return (
         
@@ -94,7 +100,7 @@ export default function PlacesFormPage() {
               <input type="number" value={maxGuests} onChange={ ev => setMaxGuests(ev.target.value)} />
             </div>
           </div>
-         <button className='w-44 mt-4   border rounded-xl py-2 px-2 text-lg font-medium text-lodgist1 bg-sky-400 ' >Save</button>
+         <button className='w-44 mt-4 center  border rounded-xl py-2 px-2 text-lg font-medium text-lodgist1 bg-sky-400 ' >Save</button>
       </form>
       </div>
     )

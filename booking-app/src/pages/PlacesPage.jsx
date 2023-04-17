@@ -30,9 +30,9 @@ const PlacesPage = () => {
       <div className='mt-4 p-4'> 
         {places.length > 0 && places.map(place => (
           <Link to={'/account/places/'+place._id} className='flex cursor-pointer bg-zinc-200 gap-4 p-4 rounded-2xl'>
-            <div className='h-32 w-32 bg-gray-300 shrink-0'> 
+            <div className=' flex h-32 w-32 bg-gray-300 shrink-0'> 
               {place.photos.length > 0 && (
-                  <img src={place.photos[0]} alt="" />
+                  <img className='object-cover' src={'http://localhost:8080/uploads/' + place.photos[0]} alt="" />
               )}
             </div>
             <div>

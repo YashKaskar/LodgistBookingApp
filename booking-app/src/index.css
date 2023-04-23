@@ -4,6 +4,6 @@
 
 
 /* for all input css */
-input[type= 'text'], input[type= 'email'], input[type= 'password'], input[type= 'number']  {    
+input[type= 'text'], input[type= 'email'], input[type= 'password'], input[type= 'number'], input[type= 'tel'] {    
     @apply w-full border rounded-xl py-3 px-4 mt-4
 }

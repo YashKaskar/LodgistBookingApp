@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { differenceInCalendarDays } from 'date-fns';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
+import { UserContext } from './usercontext';
 
 
 const BookingWidget = ({ place }) => {
@@ -11,8 +12,13 @@ const BookingWidget = ({ place }) => {
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [redirect, setRedirect] = useState('');
+  const { user } = useContext(UserContext)
   
-
+  useEffect(() => {   
+    if (user) {  
+      setName (user.name)
+    }
+  }, [user])
     async function bookThisPlace() {
       const response = await axios.post('/bookings', {
         checkIn,checkOut,numberOfGuests,name,phone,

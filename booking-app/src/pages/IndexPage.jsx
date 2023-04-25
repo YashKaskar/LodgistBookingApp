@@ -11,7 +11,13 @@ const IndexPage = () => {
     })
   })
   return (
-    <div className='p-16 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4' > 
+    <div> 
+      <div className='mt-5'> 
+        <h1 className='text-center font-bold text-[1.5rem] border p-9 text-lodgist italic bg-gray-300'>SOMETIMES YOU JUST NEED A BREAK IN A BEAUTIFUL PLACE</h1>
+      </div>
+      
+
+     <div className='p-16 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4' > 
       {places.length > 0 && places.map(place => (
         <Link to={'/place/' +place._id}> 
           <div className='flex mb-2'> 
@@ -27,6 +33,8 @@ const IndexPage = () => {
           </Link>
       ))}
     </div>  
+    </div>
+    
   )
 }
 

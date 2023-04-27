@@ -54,6 +54,6 @@ Features ::
 
 Don't Forget to give your feedback on the project
 
-   ***Do Follow me on***
+   ***Do Follow me on*** : <br>
    Discord : Yash Kaskar#5556 <br>
    Twitter : https://twitter.com/kaskar_yash

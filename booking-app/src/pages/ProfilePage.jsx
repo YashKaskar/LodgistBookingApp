@@ -6,31 +6,29 @@ import PlacesPage from './PlacesPage';
 import AccountNavigation from '../AccountNavigation';
 
 const ProfilePage = () => {
-  const [redirect, setRedirect] = useState(null)
-  const { user, ready,setUser } = useContext(UserContext)
-
-  let { subpage } = useParams();
-  if (subpage === undefined) { 
+  const [redirect,setRedirect] = useState(null);
+  const {ready,user,setUser} = useContext(UserContext);
+  let {subpage} = useParams();
+  if (subpage === undefined) {
     subpage = 'profile';
   }
+  
 
   async function logout() {
-    await axios.post('/logout')
-    setRedirect('/')
-    setUser(null)
+    await axios.post('/logout');
+    setRedirect('/');
+    setUser(null);
   }
-  
+
   if (!ready) {
-    return 'Loading....'
-      
+    return 'Loading...';
   }
 
-  if (ready && !user && !redirect) { 
-    <Navigate to={'/login'} />
+  if (ready && !user && !redirect) {
+    return <Navigate to={'/login'} />
   }
 
-
-  if (redirect) {  
+  if (redirect) {
     return <Navigate to={redirect} />
   }
 
@@ -39,7 +37,7 @@ const ProfilePage = () => {
       <AccountNavigation />
       {subpage === 'profile' && (  
         <div className='text-center text-lg font-semibold mt-20 '>   
-          Hello, my friend <span className='text-lodgist font-extrabold ml-2 underline'>{user.name}</span>
+          Hello, User<span className='text-lodgist font-extrabold ml-2 underline'>{user.name}</span>
           <br />
           <br />
           You are logged In with <span className='text-sky-500 ml-2 '>{user.email}</span>

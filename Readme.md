@@ -46,3 +46,14 @@ Features ::
 
    * react ( react-dom, react-router-dom )
    * tailwind css
+
+
+*** Project Live Site***
+()
+
+
+Don't Forget to give your feedback on the project
+
+   ***Do Follow me on***
+   Discord : Yash Kaskar#5556
+   Twitter : https://twitter.com/kaskar_yash

@@ -51,7 +51,7 @@ const ProfilePage = () => {
         < PlacesPage />
       )}
     </div>
-    {user.name}
+    
   ) 
 }
 

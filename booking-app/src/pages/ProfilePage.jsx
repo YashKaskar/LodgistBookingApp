@@ -3,7 +3,8 @@ import { UserContext } from '../usercontext';
 import { Navigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import PlacesPage from './PlacesPage';
-import AccountNavigation from '../AccountNavigation';
+import AccountNavigation from './../AccountNavigation';
+
 
 const ProfilePage = () => {
   const [redirect,setRedirect] = useState(null);

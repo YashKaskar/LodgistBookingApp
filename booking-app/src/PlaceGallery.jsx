@@ -8,7 +8,7 @@ const PlaceGallery = ({ place }) => {
     
     if (showAllPhotos) {  
         return (
-            <div className='bg-white sticky inset-0 min-h-screen'>
+            <div className='bg-yellow-300 sticky inset-0 min-h-screen'>
                 <div>
                  <h2 className='font-bold text-2xl mt-6 p-6'> Photos of <span className='underline'> {place.title} </span></h2>
                 </div>  

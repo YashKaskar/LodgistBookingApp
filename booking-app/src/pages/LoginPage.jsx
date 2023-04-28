@@ -15,8 +15,8 @@ const LoginPage = () => {
     ev.preventDefault();
     try {
       const data = await axios.post('/login', { email, password })
-      setUser(data)
       alert('Login Successfull')
+      setUser(data)
       setRedirect(true)
     } catch (e) {  
       alert('Login failed')

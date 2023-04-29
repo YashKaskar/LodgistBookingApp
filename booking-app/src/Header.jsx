@@ -26,7 +26,7 @@ const Header = () => {
         </svg>
         {!! user && (
           <div className='text-xs  md:text-base md:py-0.5'>
-            {user.name}
+            {user?.name}
           </div>
         )}
           </Link>

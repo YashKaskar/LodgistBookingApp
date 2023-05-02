@@ -30,8 +30,8 @@ const PlacesPage = () => {
       </div>
       <h3 className='mt-6 text-center font-medium'>List of all added places</h3>
       <div className='mt-4 p-4'> 
-        {places.length > 0 && places.map(place => (
-          <Link to={'/account/places/'+place._id} className='flex cursor-pointer bg-zinc-200 gap-4 p-4 rounded-2xl'>
+        {places.length > 0 && places.map((place, index) => (
+          <Link key={index} to={'/account/places/'+place._id} className='flex cursor-pointer bg-zinc-200 gap-4 p-4 rounded-2xl'>
             <div className=' flex h-32 w-32 bg-gray-300 shrink-0'> 
               <PlaceImg place={place} />
             </div>

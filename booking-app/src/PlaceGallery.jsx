@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Image from './Image';
 
 
 
@@ -13,9 +14,9 @@ const PlaceGallery = ({ place }) => {
                  <h2 className='font-bold text-2xl mt-6 p-6'> Photos of <span className='underline'> {place.title} </span></h2>
                 </div>  
                 <div className='p-8 grid  grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 '>   
-                {place.photos?.length > 0 && place.photos.map(photo => (    
-                    <div>   
-                        <img className='h-60'  src={'http://localhost:8080/uploads/' + photo} alt="" />
+                {place.photos?.length > 0 && place.photos.map((photo, index) => (    
+                    <div key={index}>   
+                        <Image className='h-60'  src={photo} alt="" />
                      </div>
                  ))}
                 </div>
@@ -37,17 +38,17 @@ const PlaceGallery = ({ place }) => {
               <div className=' object-cover grid gap-2'>     
                   {place.photos?.[0] && (  
                       <div className=' object-cover cursor-pointer'>
-                        <img onClick={() => setshowAllPhotos(true)} src={'http://localhost:8080/uploads/' + place.photos[0]} alt="" />  
+                        <Image onClick={() => setshowAllPhotos(true)} src={ place.photos[0]} alt="" />  
                     </div>              
                   )}
               </div>
               <div className='grid gap-2'>     
                   {place.photos?.[1] && (   
-                      <img onClick={() => setshowAllPhotos(true)} className='object-cover grid gap-2 cursor-pointer'  src={'http://localhost:8080/uploads/' + place.photos[1]} alt="" />
+                      <Image onClick={() => setshowAllPhotos(true)} className='object-cover grid gap-2 cursor-pointer'  src={ place.photos[1]} alt="" />
                   )}
                   <div className='overflow-hidden'> 
                   {place.photos?.[2] && (   
-                      <img onClick={() => setshowAllPhotos(true)} className='object-cover grid gap-2 cursor-pointer' src={'http://localhost:8080/uploads/' + place.photos[2]} alt="" />
+                      <Image onClick={() => setshowAllPhotos(true)} className='object-cover grid gap-2 cursor-pointer' src={ place.photos[2]} alt="" />
                   )}  
                   </div>
               </div>   

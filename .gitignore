@@ -1,3 +1,4 @@
 #Secret
 api/.env
 api/Uploads/*
+api/node_modules

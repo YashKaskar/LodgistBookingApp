@@ -22,7 +22,7 @@ const ProfilePage = () => {
   }
 
   if (!ready) {
-    return 'Loading...';
+    return 'Loading... Refresh the Page Onces ';
   }
 
   if (ready && !user && !redirect) {
